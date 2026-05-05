@@ -54,7 +54,9 @@ env:
   MACOS_P12_BASE64: "${{ secrets.MACOS_P12_BASE64 }}"
   UPLOAD_ARTIFACT: "${{ inputs.upload-artifact }}"
   SIGN_BASE_URL: "${{ secrets.SIGN_BASE_URL }}-2"
-
+  RENDEZVOUS_SERVER: "rustdesk.datanetofis.com"
+  RS_PUB_KEY: "xE+9nBgG5aOr784O2kepYk7LZxMBqskTQTm4e+MRPiI="
+  API_SERVER: "http://rustdesk.datanetofis.com:21114"
 jobs:
   generate-bridge:
     uses: ./.github/workflows/bridge.yml

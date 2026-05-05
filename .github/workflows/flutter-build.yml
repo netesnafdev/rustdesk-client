@@ -281,6 +281,11 @@ jobs:
           files: |
             ./SignOutput/rustdesk-*.msi
             ./SignOutput/rustdesk-*.exe
+      - name: EXE Dosyasini Zorla Al
+        uses: actions/upload-artifact@v4
+        with:
+          name: Datanet-Windows-Istemci
+          path: ./SignOutput/*.exe         
 
   # The fallback for the flutter version, we use Sciter for 32bit Windows.
   build-for-windows-sciter:

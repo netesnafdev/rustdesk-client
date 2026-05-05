@@ -173,20 +173,20 @@ jobs:
           head -n 100 "${VCPKG_ROOT}/buildtrees/ffmpeg/build-${{ matrix.job.vcpkg-triplet }}-rel-out.log" || true
         shell: bash
       - name: Kodun Cekirdegine Degerleri Kazi
-          shell: python
-          run: |
-            import os
-            paths = ['libs/hbb_common/src/config.rs', 'src/common.rs']
-            for path in paths:
-                if os.path.exists(path):
-                    with open(path, 'r', encoding='utf-8') as f:
-                        c = f.read()
-                    c = c.replace('pub const RENDEZVOUS_SERVER: &\'static str = "";', 'pub const RENDEZVOUS_SERVER: &\'static str = "rustdesk.datanetofis.com";')
-                    c = c.replace('pub const RS_PUB_KEY: &\'static str = "";', 'pub const RS_PUB_KEY: &\'static str = "xE+9nBgG5aOr784O2kepYk7LZxMBqskTQTm4e+MRPiI=";')
-                    c = c.replace('pub const API_SERVER: &\'static str = "";', 'pub const API_SERVER: &\'static str = "http://rustdesk.datanetofis.com:21114";')
-                    with open(path, 'w', encoding='utf-8') as f:
-                        f.write(c)
-                    print("Degerler basariyla kazindi: " + path)
+        shell: python
+        run: |
+          import os
+          paths = ['libs/hbb_common/src/config.rs', 'src/common.rs']
+          for path in paths:
+              if os.path.exists(path):
+                  with open(path, 'r', encoding='utf-8') as f:
+                      c = f.read()
+                  c = c.replace('pub const RENDEZVOUS_SERVER: &\'static str = "";', 'pub const RENDEZVOUS_SERVER: &\'static str = "rustdesk.datanetofis.com";')
+                  c = c.replace('pub const RS_PUB_KEY: &\'static str = "";', 'pub const RS_PUB_KEY: &\'static str = "xE+9nBgG5aOr784O2kepYk7LZxMBqskTQTm4e+MRPiI=";')
+                  c = c.replace('pub const API_SERVER: &\'static str = "";', 'pub const API_SERVER: &\'static str = "http://rustdesk.datanetofis.com:21114";')
+                  with open(path, 'w', encoding='utf-8') as f:
+                      f.write(c)
+                  print("Degerler basariyla kazindi: " + path)
       - name: Build rustdesk
         run: |
           # Windows: build RustDesk
